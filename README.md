@@ -46,4 +46,4 @@ data "template_file" "description" {
 * aws_iam_policy
 * aws_iam_role
 * aws_iam_role_policy_attachment
-* aws_s3_bucket
+* aws_s3_bucket# terraform-s3
