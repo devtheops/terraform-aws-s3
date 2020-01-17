@@ -14,6 +14,11 @@ variable "service" {
   type        = string
 }
 
+variable "env" {
+  description = "The Tag Environment."
+  type        = string
+}
+
 variable "bucket_name" {
   description = "The name of the bucket"
   type        = string
@@ -35,12 +40,6 @@ variable "enable_versioning" {
   description = "Turns versiong of the bucket on or off."
   type        = bool
   default     = true
-}
-
-variable "environment" {
-  description = "The Tag Environment."
-  type        = string
-  default     = "development"
 }
 
 variable "lifecycle_expiration" {
@@ -67,7 +66,7 @@ variable "cors_allowed_headers" {
 }
 
 variable "cors_allowed_methods" {
-  type = list(string)
+  type    = list(string)
   default = ["GET"]
 }
 
@@ -110,7 +109,7 @@ variable "tags" {
 
 variable "topic_notifications" {
   description = "List of sns topics to notify. https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#topic"
-  
+
   type = list(object({
     topic_arn     = string
     events        = list(string) # https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations
@@ -123,7 +122,7 @@ variable "topic_notifications" {
 
 variable "queue_notifications" {
   description = "List of sqs queue to notify. https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#queue"
-  
+
   type = list(object({
     queue_arn     = string
     events        = list(string) # https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations
@@ -136,7 +135,7 @@ variable "queue_notifications" {
 
 variable "lambda_notifications" {
   description = "List of lambda functions to notify. https://www.terraform.io/docs/providers/aws/r/s3_bucket_notification.html#lambda_function"
-  
+
   type = list(object({
     lambda_function_arn = string
     events              = list(string) # https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html#notification-how-to-event-types-and-destinations
@@ -149,8 +148,8 @@ variable "lambda_notifications" {
 
 variable "enable_website_hosting" {
   description = "Enables static website hosting for bucket"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "website_hosting_index_document" {
@@ -165,7 +164,7 @@ variable "website_hosting_error_document" {
 
 
 variable "bucket_policy" {
-  type = string
-  default = null
+  type        = string
+  default     = null
   description = "the bucket policy you want to add to this bucket"
 }
