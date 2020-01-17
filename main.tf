@@ -54,25 +54,6 @@ resource "aws_s3_bucket" "main" {
     }
   }
 
-  # Optional replication
-  dynamic "replication_configuration" {
-    for_each = local.enable_replication
-
-    content {
-      role = aws_iam_role.replication_role[0].arn
-
-      rules {
-        id     = var.bucket_name
-        prefix = ""
-        status = "Enabled"
-
-        destination {
-          bucket = aws_s3_bucket.replication_bucket[0].arn
-        }
-      }
-    }
-  }
-
   dynamic "website" {
     for_each = local.enable_website_hosting
     content {
@@ -129,7 +110,7 @@ resource "aws_lambda_permission" "allow_bucket" {
 }
 
 resource "aws_s3_bucket_policy" "main" {
-  count = var.bucket_policy == null ? 0 : 1
+  count  = var.bucket_policy == null ? 0 : 1
   bucket = var.bucket_name
   policy = var.bucket_policy
 }

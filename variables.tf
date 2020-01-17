@@ -25,12 +25,6 @@ variable "bucket_name" {
   default     = ""
 }
 
-variable "enable_replication" {
-  description = "Turns bucket replication on or off."
-  type        = bool
-  default     = false
-}
-
 variable "enable_lifecycle" {
   type    = bool
   default = false

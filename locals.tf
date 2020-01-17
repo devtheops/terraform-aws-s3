@@ -5,14 +5,12 @@ locals {
 
   enable_lifecycle = var.enable_lifecycle ? [1] : []
 
-  enable_replication = var.enable_replication ? [1] : []
-
-  enable_website_hosting = var.enable_website_hosting ? [1]: []
+  enable_website_hosting = var.enable_website_hosting ? [1] : []
 
   default_tags = {
-    app        = var.app
-    service    = var.service
-    env        = var.environment
-    terraform  = "true"
+    app       = var.app
+    service   = var.service
+    env       = var.env
+    terraform = "true"
   }
 }
