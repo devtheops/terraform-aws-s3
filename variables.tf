@@ -156,6 +156,11 @@ variable "website_hosting_error_document" {
   default     = "index.html"
 }
 
+variable "website_hosting_redirect_all_requests_to" {
+  description = "A hostname to redirect all website requests for this bucket to."
+  default = null
+}
+
 
 variable "bucket_policy" {
   type        = string

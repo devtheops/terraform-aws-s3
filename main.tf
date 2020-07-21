@@ -59,6 +59,7 @@ resource "aws_s3_bucket" "main" {
     content {
       index_document = var.website_hosting_index_document
       error_document = var.website_hosting_error_document
+      redirect_all_requests_to = var.website_hosting_redirect_all_requests_to
     }
   }
 }
